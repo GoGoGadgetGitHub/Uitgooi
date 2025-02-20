@@ -408,9 +408,6 @@ class Uitgooi(Ui_Uitgooi, QMainWindow):
         self.kFolder = ''
         self.LookUp = {}
         self.orders = {}
-        self.schemes = {}
-        self.scheme = {}
-        self.schemeLetter = {}
         self.OkIDs = {}
         self.packagesOrdered = {}
         self.packagesCopied = {}
@@ -418,6 +415,19 @@ class Uitgooi(Ui_Uitgooi, QMainWindow):
         self.errors = []
         self.NoIDOrder = 0
         self.progressInicrement = 0
+
+        self.thrd = QThread()
+        self.worker = CopyFunction(self)
+        self.worker.moveToThread(self.thrd)
+        self.thrd.started.connect(self.worker.run)
+        self.worker.finished.connect(self.thrd.quit)
+        self.worker.finished.connect(self.worker.deleteLater)
+        self.worker.update_progress_bar.connect(self.update_progress_bar)
+        self.thrd.finished.connect(self.thrd.deleteLater)
+
+        self.btnSelectDFolder.setEnabled(False)
+        self.btnSelectKFolder.setEnabled(False)
+        self.btnBegin.setEnabled(False)
     
     def select_d_folder_clicked(self):
         """
