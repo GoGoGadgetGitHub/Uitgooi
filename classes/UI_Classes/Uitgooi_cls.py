@@ -94,7 +94,7 @@ class Uitgooi(Ui_Uitgooi, QMainWindow):
 
         self.read_schemes()
         self.populate_combobox()
-        self.cmbScheme.setCurrentText("2025")
+        self.cmbScheme.setCurrentText("2025-LunchBag")
 
         self.btnSelectSFolder.clicked.connect(self.select_s_folder_clicked)
         self.btnSelectDFolder.clicked.connect(self.select_d_folder_clicked)
