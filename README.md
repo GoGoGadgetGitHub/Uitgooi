@@ -70,6 +70,7 @@ D-SomeText
   
 ```
 
-The scipt has a GUI made with PyQt6. 
+The script has a GUI made with PyQt6. 
 
 Along with it's main functionality it has allot of extra checks and safty mesures in place to support the process it was meant to automate.
+
